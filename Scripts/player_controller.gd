@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -500.0
 
 @export var Bloom_level : TileMapLayer
 @export var Gloom_level : TileMapLayer
