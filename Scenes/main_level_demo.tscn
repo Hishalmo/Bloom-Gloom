@@ -495,7 +495,7 @@ tile_set = SubResource("TileSet_q0076")
 collision_enabled = false
 
 [node name="player" parent="." unique_id=101389145 instance=ExtResource("1_lq6j3")]
-position = Vector2(22.23317, -14.543121)
+position = Vector2(25.38826, -6.0068054)
 scale = Vector2(2, 2)
 
 [node name="player_controller" parent="player" index="0" unique_id=1316840856 node_paths=PackedStringArray("Bloom_level", "Gloom_level", "greyscale")]

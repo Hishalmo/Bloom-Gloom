@@ -57,4 +57,4 @@ frame_progress = 0.45530772
 shape = SubResource("CapsuleShape2D_23qmi")
 
 [node name="player_camera" type="Camera2D" parent="player_controller" unique_id=427208265]
-zoom = Vector2(1.6, 1.6)
+zoom = Vector2(1.8, 1.8)
