@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://ff31ja4l82or"]
+
+[ext_resource type="Script" uid="uid://bxxcaw1jlea40" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://coejh61ub57tx" path="res://Assets/platformer_metroidvania asset pack v1.01/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_spritesheet(new).png" id="2_6t5aa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
+atlas = ExtResource("2_6t5aa")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q0076"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgqql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkybt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3wgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3smsa")
+}],
+"loop": 2,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23qmi"]
+radius = 4.0
+height = 16.0
+
+[node name="player" type="Node2D" unique_id=101389145]
+
+[node name="player_controller" type="CharacterBody2D" parent="." unique_id=1316840856]
+script = ExtResource("1_cvnsp")
+
+[node name="player_animation" type="AnimatedSprite2D" parent="player_controller" unique_id=823941907]
+sprite_frames = SubResource("SpriteFrames_q0076")
+autoplay = "default"
+frame_progress = 0.45530772
+
+[node name="player_collision" type="CollisionShape2D" parent="player_controller" unique_id=1577297221]
+shape = SubResource("CapsuleShape2D_23qmi")
+
+[node name="player_camera" type="Camera2D" parent="player_controller" unique_id=427208265]
+zoom = Vector2(1.6, 1.6)
