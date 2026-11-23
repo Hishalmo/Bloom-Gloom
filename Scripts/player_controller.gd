@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -500.0
 
 @export var Bloom_level : TileMapLayer
 @export var Gloom_level : TileMapLayer
 @export var greyscale : ColorRect
+@onready var player_animation: AnimatedSprite2D = $player_animation
 
 # How far the ripple must spread to cover the whole screen (in screen-heights)
 const RIPPLE_MAX_RADIUS = 2.5
@@ -20,12 +21,17 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 2
 
-	# Handle jump.
+# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+# flips the player with directions
+	if velocity.x < 0:
+		player_animation.flip_h = 1
+	elif velocity.x > 0:
+		player_animation.flip_h = 0
+# Get the input direction and handle the movement/deceleration.
+# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -38,13 +44,15 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB"):
 		Gloom_level.collision_enabled = not Gloom_level.collision_enabled
-		Gloom_level.modulate.a = 0.5
 		is_grey = not is_grey
 		_play_ripple(is_grey)
-	if is_grey == false:
-		Gloom_level.modulate.a = 0.5
-	else:
-		Gloom_level.modulate.a = 1
+#tweens the opacity 
+		if is_grey == false:
+			var t = create_tween()
+			t.tween_property(Gloom_level, "modulate:a",1,0.4)
+		else:
+			var t = create_tween()
+			t.tween_property(Gloom_level, "modulate:a",0.2,0.1)
 
 # Spreads (or shrinks) the greyscale ripple outward from the player's position on screen
 func _play_ripple(grey_on: bool) -> void:

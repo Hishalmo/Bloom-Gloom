@@ -37,6 +37,11 @@ animations = [{
 "loop": 2,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23qmi"]
@@ -50,11 +55,11 @@ script = ExtResource("1_cvnsp")
 
 [node name="player_animation" type="AnimatedSprite2D" parent="player_controller" unique_id=823941907]
 sprite_frames = SubResource("SpriteFrames_q0076")
+animation = &"new_animation"
 autoplay = "default"
-frame_progress = 0.45530772
 
 [node name="player_collision" type="CollisionShape2D" parent="player_controller" unique_id=1577297221]
 shape = SubResource("CapsuleShape2D_23qmi")
 
 [node name="player_camera" type="Camera2D" parent="player_controller" unique_id=427208265]
-zoom = Vector2(1.8, 1.8)
+zoom = Vector2(1.5, 1.5)

@@ -3,7 +3,17 @@
 		{
 			"uuid": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
 			"title": "Task",
-			"color": "569eff"
+			"color": "ffdd56"
+		},
+		{
+			"uuid": "257ebd90-2b0b-4f84-a013-e367c8fcfd95",
+			"title": "priority",
+			"color": "ce2323"
+		},
+		{
+			"uuid": "a840e670-5373-485f-8d2c-6fee0d3e9bb3",
+			"title": "polish",
+			"color": "52fc15"
 		}
 	],
 	"stages": [
@@ -11,26 +21,113 @@
 			"uuid": "3e7f8dc3-443f-44ef-b173-e54b24789b0b",
 			"title": "Todo",
 			"tasks": [
-				"9f97ce72-ff64-408b-ac0a-c85d8d0e2cf8"
+				"701ec462-4b11-43b8-830c-7c1285c8590a",
+				"fcab55eb-3c38-49a3-9990-57f0fa44ffa8",
+				"61c15b47-aeb7-4806-8e9e-7b9277854e6e",
+				"03d50712-641b-4856-98ed-bd8e070cd699",
+				"7cf28a7f-23a1-4c57-8ebc-f7110be6ca15",
+				"1e7ea16c-86ba-4f43-b0cb-a07e89e8ee1f"
 			]
 		},
 		{
 			"uuid": "f5cc847d-016e-4135-8ae5-26619c0cfbc0",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"9f97ce72-ff64-408b-ac0a-c85d8d0e2cf8"
+			]
 		},
 		{
 			"uuid": "89b7a694-e7d5-4f3c-a33e-e581bdb8e742",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"4c102d85-ac29-41ad-b6e6-29c13b2af955",
+				"2f8b8125-aa78-4e41-b892-01dc4f5fc295",
+				"11a63b34-f122-4798-b543-1860fb8fe960"
+			]
 		}
 	],
 	"tasks": [
 		{
 			"uuid": "9f97ce72-ff64-408b-ac0a-c85d8d0e2cf8",
-			"title": "YEHAeahhAHAHHHh",
+			"title": "making a somewhat cool first level",
+			"description": "",
+			"category": "257ebd90-2b0b-4f84-a013-e367c8fcfd95",
+			"steps": []
+		},
+		{
+			"uuid": "4c102d85-ac29-41ad-b6e6-29c13b2af955",
+			"title": "Bug: tweening the opacity when switching is a bit FREAKY... heh.",
 			"description": "",
 			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "701ec462-4b11-43b8-830c-7c1285c8590a",
+			"title": "Spikey roses ",
+			"description": "",
+			"category": "257ebd90-2b0b-4f84-a013-e367c8fcfd95",
+			"steps": []
+		},
+		{
+			"uuid": "fcab55eb-3c38-49a3-9990-57f0fa44ffa8",
+			"title": "basic sound design (expand menu)",
+			"description": "",
+			"category": "257ebd90-2b0b-4f84-a013-e367c8fcfd95",
+			"steps": [
+				{
+					"details": "Jump",
+					"done": false
+				},
+				{
+					"details": "Walk",
+					"done": false
+				},
+				{
+					"details": "Switch(please be za warduuu sound)",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "03d50712-641b-4856-98ed-bd8e070cd699",
+			"title": "Sound design 2: basic osts",
+			"description": "",
+			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "7cf28a7f-23a1-4c57-8ebc-f7110be6ca15",
+			"title": "change main charachter sprite ",
+			"description": "",
+			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "2f8b8125-aa78-4e41-b892-01dc4f5fc295",
+			"title": "added shaders indicating what would disappear  when switching ",
+			"description": "",
+			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "11a63b34-f122-4798-b543-1860fb8fe960",
+			"title": "polishing the switching system",
+			"description": "",
+			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "1e7ea16c-86ba-4f43-b0cb-a07e89e8ee1f",
+			"title": "Sound design 3: reverbing when switching (you can leave this on me)",
+			"description": "",
+			"category": "a840e670-5373-485f-8d2c-6fee0d3e9bb3",
+			"steps": []
+		},
+		{
+			"uuid": "61c15b47-aeb7-4806-8e9e-7b9277854e6e",
+			"title": "Pushing mechanic when overllaping to avoid clipping",
+			"description": "",
+			"category": "257ebd90-2b0b-4f84-a013-e367c8fcfd95",
 			"steps": []
 		}
 	],
