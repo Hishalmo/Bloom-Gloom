@@ -76,11 +76,11 @@
 			"steps": [
 				{
 					"details": "Jump",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Walk",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "Switch(please be za warduuu sound)",

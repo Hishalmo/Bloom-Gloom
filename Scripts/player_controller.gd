@@ -40,9 +40,24 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func is_in_wall() -> bool:
+	#Player pos in Vec2. (x,y)
+	var world_spot = global_position 
+	#Same spot measured from the Gloom layers own corner instead of the worlds origin
+	var local_spot = Gloom_level.to_local(world_spot) 
+	#Which tile square (column, row) that spot falls in
+	var cell = Gloom_level.local_to_map(local_spot)
+	# -1 means the square is empty.
+	return Gloom_level.get_cell_source_id(cell) != -1
+	#Gonna kms
+
+
 #handles switching 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("LMB"):
+	if event.is_action_pressed("LMB") or event.is_action_pressed("Shift"):
+		if is_grey and is_in_wall(): #Cheks if the player is inside the wall before switching
+			print("Cant switch while in wall!")
+			return
 		Gloom_level.collision_enabled = not Gloom_level.collision_enabled
 		is_grey = not is_grey
 		_play_ripple(is_grey)
