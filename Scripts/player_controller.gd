@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -500.0
 
 @export var Bloom_level : TileMapLayer
 @export var Gloom_level : TileMapLayer
+@export var Spike_level : TileMapLayer
 @export var greyscale : ColorRect
 @onready var player_animation: AnimatedSprite2D = $player_animation
 
@@ -60,6 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		Gloom_level.collision_enabled = not Gloom_level.collision_enabled
 		is_grey = not is_grey
+		Spike_level.visible = is_grey
 		_play_ripple(is_grey)
 #tweens the opacity 
 		if is_grey == false:
