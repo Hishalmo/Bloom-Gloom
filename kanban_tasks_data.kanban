@@ -21,9 +21,7 @@
 			"uuid": "3e7f8dc3-443f-44ef-b173-e54b24789b0b",
 			"title": "Todo",
 			"tasks": [
-				"701ec462-4b11-43b8-830c-7c1285c8590a",
 				"fcab55eb-3c38-49a3-9990-57f0fa44ffa8",
-				"61c15b47-aeb7-4806-8e9e-7b9277854e6e",
 				"03d50712-641b-4856-98ed-bd8e070cd699",
 				"7cf28a7f-23a1-4c57-8ebc-f7110be6ca15",
 				"1e7ea16c-86ba-4f43-b0cb-a07e89e8ee1f"
@@ -33,14 +31,19 @@
 			"uuid": "f5cc847d-016e-4135-8ae5-26619c0cfbc0",
 			"title": "Doing",
 			"tasks": [
-				"9f97ce72-ff64-408b-ac0a-c85d8d0e2cf8",
-				"f06912ff-4248-4384-a34c-ada6d0994320"
+				"f06912ff-4248-4384-a34c-ada6d0994320",
+				"c4fa6ce9-199f-404d-b5b3-dccec14730c5",
+				"0f976285-16a1-4a70-bb56-271e3b5e947f",
+				"e4f5fd3d-d2ea-4e7e-b548-869ae3ecb3f7"
 			]
 		},
 		{
 			"uuid": "89b7a694-e7d5-4f3c-a33e-e581bdb8e742",
 			"title": "Done",
 			"tasks": [
+				"61c15b47-aeb7-4806-8e9e-7b9277854e6e",
+				"9f97ce72-ff64-408b-ac0a-c85d8d0e2cf8",
+				"701ec462-4b11-43b8-830c-7c1285c8590a",
 				"4c102d85-ac29-41ad-b6e6-29c13b2af955",
 				"2f8b8125-aa78-4e41-b892-01dc4f5fc295",
 				"11a63b34-f122-4798-b543-1860fb8fe960",
@@ -48,7 +51,9 @@
 				"453b09a7-c2c5-4c6a-9ed9-943d7ca12a8a",
 				"651911a4-b019-457d-83d6-530b7d17998f",
 				"864d5916-c797-40f6-9c53-6ba6f940796e",
-				"023741c2-194d-4ab5-a9eb-e8da3900751a"
+				"023741c2-194d-4ab5-a9eb-e8da3900751a",
+				"a17d45c8-1613-4451-9a9c-5eccee2237a9",
+				"94dbf4f7-4776-464d-9e86-ac4eb6412a49"
 			]
 		}
 	],
@@ -176,6 +181,41 @@
 			"title": "BUG: switching at the edge of blocks messes up the tweening ",
 			"description": "",
 			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "c4fa6ce9-199f-404d-b5b3-dccec14730c5",
+			"title": "need a checkpoint system",
+			"description": "",
+			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "a17d45c8-1613-4451-9a9c-5eccee2237a9",
+			"title": "camera system",
+			"description": "",
+			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "94dbf4f7-4776-464d-9e86-ac4eb6412a49",
+			"title": "level design for first 3 levels ",
+			"description": "",
+			"category": "72de7507-0685-4ab4-a4fa-eddb65eb0307",
+			"steps": []
+		},
+		{
+			"uuid": "0f976285-16a1-4a70-bb56-271e3b5e947f",
+			"title": "we need a background",
+			"description": "",
+			"category": "257ebd90-2b0b-4f84-a013-e367c8fcfd95",
+			"steps": []
+		},
+		{
+			"uuid": "e4f5fd3d-d2ea-4e7e-b548-869ae3ecb3f7",
+			"title": " character sprite + animation",
+			"description": "",
+			"category": "257ebd90-2b0b-4f84-a013-e367c8fcfd95",
 			"steps": []
 		}
 	],

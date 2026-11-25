@@ -2,5 +2,6 @@ extends Area2D
 
 
 
-func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	$"..".restart()
+func _physics_process(delta: float) -> void:
+	if $"..".is_grey == true and has_overlapping_bodies():
+		$"..".restart()
