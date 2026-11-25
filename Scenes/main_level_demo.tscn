@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dos1cx7e6grhb" path="res://spikes.png" id="4_jvp1t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q0076"]
+resource_local_to_scene = true
 shader = ExtResource("2_4btgh")
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/radius = 0.0
@@ -496,15 +497,18 @@ sources/2 = SubResource("TileSetAtlasSource_0wqim")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s4odj"]
 texture = ExtResource("4_jvp1t")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.75548, -8, 5.75548, -8, 5.2159023, 2.8777409, 0.17985916, 3.7770348, -5.036044, 1.4388714)
 
 [sub_resource type="TileSet" id="TileSet_xughg"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_s4odj")
 
 [node name="main_level_demo" type="Node2D" unique_id=1203989173]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=820655477]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=558649152]
 
-[node name="greyscale" type="ColorRect" parent="CanvasLayer" unique_id=540326911]
+[node name="greyscale" type="ColorRect" parent="CanvasLayer" unique_id=1965266567]
 material = SubResource("ShaderMaterial_q0076")
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dmupgswnd2sur"]
+
+[ext_resource type="Shader" uid="uid://c5yll78mvrxh3" path="res://Scenes/greyscale.gdshader" id="1_5oaki"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q0076"]
+shader = ExtResource("1_5oaki")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
+shader_parameter/edge_softness = 0.3750000178125
+shader_parameter/ring_width = 0.0400000019
+shader_parameter/distortion = 0.012
+shader_parameter/ring_glow = 0.2000000095
+shader_parameter/strength = 1.0
+shader_parameter/black_point = 0.1050000049875
+shader_parameter/gamma = 1.2690000127775
+shader_parameter/spare_color = Color(0, 0, 0, 1)
+shader_parameter/tolerance = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=558649152]
+
+[node name="greyscale" type="ColorRect" parent="." unique_id=1965266567]
+material = SubResource("ShaderMaterial_q0076")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

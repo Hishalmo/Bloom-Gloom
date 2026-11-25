@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -500.0
 
+var coyote_active: bool
 @export var Bloom_level : TileMapLayer
 @export var Gloom_level : TileMapLayer
 @export var Spike_level : TileMapLayer
@@ -23,7 +24,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta * 2
 
 # Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() or Input.is_action_just_pressed("ui_accept") and coyote_active == true:
 		velocity.y = JUMP_VELOCITY
 
 # flips the player with directions
@@ -39,7 +40,21 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+# coyote time 
+# basically stores the state "is_on_floor()" in a var then compares it after the engine updates the values...
+# in move_and_slide(). if the values dont match then the player must be falling thus opening the window for coyote...
+# if you feel it is way too forgiving just tweak the timer on line 51
+	var coyote_is_on_floor = is_on_floor()
 	move_and_slide()
+	if coyote_is_on_floor != is_on_floor():
+		coyote_active = true
+		$coyote_timer.start(.15)
+func _on_coyote_timer_timeout() -> void:
+		coyote_active = false
+
+func restart():
+	get_tree().reload_current_scene()
+
 
 func is_in_wall() -> bool:
 	#Player pos in Vec2. (x,y)
@@ -51,19 +66,29 @@ func is_in_wall() -> bool:
 	# -1 means the square is empty.
 	return Gloom_level.get_cell_source_id(cell) != -1
 	#Gonna kms
+	#EVERYONE 👥 GET IN ⬇️ THE CAR 🚗 WE ARE LEAVING 🏃🏼THIS TOWN 🌇 NOW!!! 😧 AHHH WHAT THE 😱 IMPOSSIBLE
+	#⁉️THIS ISN'T THE CAR 🚗 NOOO 🙅🏼 NOOO 😭 OHH‼️HERMIT PURPLE 💜
 
 
-#handles switching 
+# handles switching 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB") or event.is_action_pressed("Shift"):
 		if is_grey and is_in_wall(): #Cheks if the player is inside the wall before switching
+			$"Cant_switch_while_in_wall!".play()
 			print("Cant switch while in wall!")
 			return
 		Gloom_level.collision_enabled = not Gloom_level.collision_enabled
 		is_grey = not is_grey
 		Spike_level.visible = is_grey
 		_play_ripple(is_grey)
-#tweens the opacity 
+
+# Managing SFX for switching 
+		if is_grey == true:
+			$Gloom_switch.play()
+		if is_grey == false:
+			$Bloom_switch.play()
+
+# tweens the opacity 
 		if is_grey == false:
 			var t = create_tween()
 			t.tween_property(Gloom_level, "modulate:a",1,0.4)

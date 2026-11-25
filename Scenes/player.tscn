@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bxxcaw1jlea40" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://coejh61ub57tx" path="res://Assets/platformer_metroidvania asset pack v1.01/platformer_metroidvania asset pack v1.01/herochar sprites(new)/herochar_spritesheet(new).png" id="2_6t5aa"]
+[ext_resource type="Script" uid="uid://boqkuuiq61568" path="res://Scenes/death_detection_area.gd" id="3_6t5aa"]
+[ext_resource type="AudioStream" uid="uid://cx1tmcx3lkf7e" path="res://Assets/Gloom_switch.wav" id="4_fkybt"]
+[ext_resource type="AudioStream" uid="uid://cbt1kqgjxf45m" path="res://Assets/Bloom_switch.wav" id="5_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://c5ayd6q1vxkgl" path="res://Assets/Cant_switch_while_in_wall.wav" id="6_x3wgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("2_6t5aa")
@@ -48,6 +52,15 @@ animations = [{
 radius = 4.0
 height = 16.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5e58l"]
+radius = 4.0
+height = 14.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fkybt"]
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("6_x3wgy")
+
 [node name="player" type="Node2D" unique_id=101389145]
 
 [node name="player_controller" type="CharacterBody2D" parent="." unique_id=1316840856]
@@ -55,7 +68,6 @@ script = ExtResource("1_cvnsp")
 
 [node name="player_animation" type="AnimatedSprite2D" parent="player_controller" unique_id=823941907]
 sprite_frames = SubResource("SpriteFrames_q0076")
-animation = &"new_animation"
 autoplay = "default"
 
 [node name="player_collision" type="CollisionShape2D" parent="player_controller" unique_id=1577297221]
@@ -63,3 +75,29 @@ shape = SubResource("CapsuleShape2D_23qmi")
 
 [node name="player_camera" type="Camera2D" parent="player_controller" unique_id=427208265]
 zoom = Vector2(1.5, 1.5)
+
+[node name="coyote_timer" type="Timer" parent="player_controller" unique_id=1162706994]
+
+[node name="death_detection_area" type="Area2D" parent="player_controller" unique_id=2037687158]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_6t5aa")
+
+[node name="death_detection_collision" type="CollisionShape2D" parent="player_controller/death_detection_area" unique_id=1154447488]
+shape = SubResource("CapsuleShape2D_5e58l")
+debug_color = Color(0.8504529, 0.37332237, 5.7756904e-07, 0.41960785)
+
+[node name="Gloom_switch" type="AudioStreamPlayer" parent="player_controller" unique_id=1564517583]
+stream = ExtResource("4_fkybt")
+pitch_scale = 1.1
+
+[node name="Bloom_switch" type="AudioStreamPlayer" parent="player_controller" unique_id=2062005688]
+stream = ExtResource("5_x3wgy")
+pitch_scale = 1.5
+
+[node name="Cant_switch_while_in_wall!" type="AudioStreamPlayer" parent="player_controller" unique_id=341929949]
+stream = SubResource("AudioStreamRandomizer_fkybt")
+volume_db = -20.0
+
+[connection signal="timeout" from="player_controller/coyote_timer" to="player_controller" method="_on_coyote_timer_timeout"]
+[connection signal="body_shape_entered" from="player_controller/death_detection_area" to="player_controller/death_detection_area" method="_on_body_shape_entered"]
