@@ -19,6 +19,7 @@ config/icon="uid://d3s3nfdxlkk4i"
 
 _mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 CheckpointSystem="*uid://cegg56e86bmpp"
+Music="*uid://8s8jq8gr16bh"
 
 [display]
 

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://8s8jq8gr16bh"]
+
+[ext_resource type="AudioStream" uid="uid://qj7ph3ymif2j" path="res://Assets/Untitled.mp3" id="1_fghhr"]
+[ext_resource type="Script" uid="uid://bnnc5usb1hrxq" path="res://Scenes/music.gd" id="1_pcohf"]
+
+[node name="Music" type="Node2D" unique_id=247685276 node_paths=PackedStringArray("music")]
+script = ExtResource("1_pcohf")
+music = NodePath("OST")
+
+[node name="OST" type="AudioStreamPlayer" parent="." unique_id=330437163]
+stream = ExtResource("1_fghhr")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true

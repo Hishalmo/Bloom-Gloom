@@ -90,6 +90,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Gloom_level.collision_enabled = not Gloom_level.collision_enabled
 		is_grey = not is_grey
 		Spike_level.visible = is_grey
+		Music.Ost_change(is_grey)
 		_play_ripple(is_grey)
 
 # Managing SFX for switching 
