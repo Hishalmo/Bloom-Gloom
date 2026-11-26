@@ -5,7 +5,7 @@
 [resource]
 shader = ExtResource("1_e0mhb")
 shader_parameter/opacity = 0.4730000224675
-shader_parameter/cell_size = 7.0
+shader_parameter/cell_size = 31.066001380635
 shader_parameter/star_chance = 0.22
 shader_parameter/star_size = 0.10600000340506
 shader_parameter/brightness = 1.4

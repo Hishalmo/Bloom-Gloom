@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -500.0
+const SPEED = 200.0 * 4
+const JUMP_VELOCITY = -500.0 * 4
 
 var coyote_active: bool
 @export var Bloom_level : TileMapLayer
@@ -21,7 +21,7 @@ var ripple_tween : Tween
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta * 2
+		velocity += get_gravity() * delta * 2 * 4
 
 # Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() or Input.is_action_just_pressed("ui_accept") and coyote_active == true:
