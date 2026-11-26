@@ -43,9 +43,11 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
 		velocity.x = direction * SPEED
+		player_animation.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		player_animation.play("default")
+		
 # coyote time 
 # basically stores the state "is_on_floor()" in a var then compares it after the engine updates the values...
 # in move_and_slide(). if the values dont match then the player must be falling thus opening the window for coyote...
