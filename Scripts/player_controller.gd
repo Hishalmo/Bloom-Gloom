@@ -24,13 +24,15 @@ const RIPPLE_TIME = 0.3
 var is_grey := false
 var ripple_tween : Tween
 
+var can_move = false
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 2 * 4
 
 # Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() or Input.is_action_just_pressed("ui_accept") and coyote_active == true:
+	if can_move and Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_active):
 		velocity.y = JUMP_VELOCITY
 
 # flips the player with directions
@@ -41,7 +43,7 @@ func _physics_process(delta: float) -> void:
 # Get the input direction and handle the movement/deceleration.
 # As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
+	if direction and can_move:
 		velocity.x = direction * SPEED
 		player_animation.play("walk")
 	else:
@@ -80,7 +82,7 @@ func is_in_wall() -> bool:
 
 # handles switching 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("LMB") or event.is_action_pressed("Shift"):
+	if can_move and (event.is_action_pressed("LMB") or event.is_action_pressed("Shift")):
 		if is_grey and is_in_wall(): #Cheks if the player is inside the wall before switching
 			$"Cant_switch_while_in_wall!".play()
 			print("Cant switch while in wall!")
