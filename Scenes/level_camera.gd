@@ -3,7 +3,7 @@ extends Camera2D
 
 
 #func _ready() -> void:
-	#print("testo camera:",global_position)
+	#self.reset_smoothing()
 
 func level_switch(target_position:Vector2):
 	var t = create_tween().set_parallel().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

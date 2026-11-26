@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 200.0 * 4
-const JUMP_VELOCITY = -500.0 * 4
+const JUMP_VELOCITY = -550.0 * 4
 
 var coyote_active: bool
 @export var Bloom_level : TileMapLayer
@@ -10,6 +10,12 @@ var coyote_active: bool
 @export var Spike_level : TileMapLayer
 @export var greyscale : ColorRect
 @onready var player_animation: AnimatedSprite2D = $player_animation
+
+
+func _ready() -> void:
+	self.global_position = CheckpointSystem.checkpoint
+
+
 
 # How far the ripple must spread to cover the whole screen (in screen-heights)
 const RIPPLE_MAX_RADIUS = 2.5
