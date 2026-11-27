@@ -14,11 +14,11 @@ func intro_pan(duration: float) -> void:
 
 func ending_pan(duration: float) -> void:
 	$"../player/player_controller".can_move = false
-	var target_position = global_position + Vector2(0, -1200)
+	var target_zoom = Vector2(1.2, 1.5)
 	var t = create_tween()
 	t.set_trans(Tween.TRANS_SINE)
 	t.set_ease(Tween.EASE_IN_OUT)
-	t.tween_property(self, "global_position", target_position, duration)
+	t.tween_property(self, "zoom", target_zoom, duration)
 	await t.finished
 
 func level_switch(target_position:Vector2):

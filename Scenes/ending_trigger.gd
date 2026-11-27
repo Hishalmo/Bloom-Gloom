@@ -11,6 +11,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if triggered:
 		return
 
-	if body.name == "player":
+	if body.name == "player_controller":
 		triggered = true
 		await ending_text.play_ending()
