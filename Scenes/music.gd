@@ -1,6 +1,6 @@
 extends Node2D
 
-
+@onready var death: ColorRect = $death/death
 @export var music: AudioStreamPlayer 
 
 func Ost_change(is_grey: bool) -> void:
@@ -12,3 +12,16 @@ func Ost_change(is_grey: bool) -> void:
 	tween.tween_property(AudioServer, "playback_speed_scale", 0.85 if is_grey else 1.0, 1.0)
 	tween.tween_property(reverb, "wet", 0.6 if is_grey else 0.0, 2.0)
 	tween.tween_property(lowpass, "cutoff_hz", 900.0 if is_grey else 20500.0, 1.0)
+
+
+
+# death animation
+func _death():
+		var shader = death.material as ShaderMaterial
+		var t = create_tween()
+		t.tween_property(shader, "shader_parameter/height", 0.5, 0.4)
+
+func spawn():
+		var shader = death.material as ShaderMaterial
+		var t = create_tween()
+		t.tween_property(shader, "shader_parameter/height", -1, 0.4)

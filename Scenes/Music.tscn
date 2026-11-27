@@ -2,6 +2,17 @@
 
 [ext_resource type="AudioStream" uid="uid://qj7ph3ymif2j" path="res://Assets/Untitled.mp3" id="1_fghhr"]
 [ext_resource type="Script" uid="uid://bnnc5usb1hrxq" path="res://Scenes/music.gd" id="1_pcohf"]
+[ext_resource type="Shader" uid="uid://b7akwhu0trnmp" path="res://Scenes/diamonds.gdshader" id="3_p1bea"]
+[ext_resource type="Script" uid="uid://cue3kxhvhjt0g" path="res://Scenes/death.gd" id="4_0chwm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0chwm"]
+shader = ExtResource("3_p1bea")
+shader_parameter/AspectRatio = 1.0
+shader_parameter/Diamonds = 75.0
+shader_parameter/pixel_size = 0.08
+shader_parameter/height = -1.0
+shader_parameter/row_sharpness = 6.0
+shader_parameter/disable_pixel = false
 
 [node name="Music" type="Node2D" unique_id=247685276 node_paths=PackedStringArray("music")]
 script = ExtResource("1_pcohf")
@@ -12,3 +23,15 @@ stream = ExtResource("1_fghhr")
 volume_db = -20.0
 autoplay = true
 parameters/looping = true
+
+[node name="death" type="CanvasLayer" parent="." unique_id=1485002218]
+process_priority = 3
+
+[node name="death" type="ColorRect" parent="death" unique_id=38598671]
+z_index = 100
+material = SubResource("ShaderMaterial_0chwm")
+offset_left = -1331.0
+offset_top = -2031.0
+offset_right = 1517.0
+offset_bottom = 695.0
+script = ExtResource("4_0chwm")

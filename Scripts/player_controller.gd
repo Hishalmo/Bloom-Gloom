@@ -5,15 +5,21 @@ const SPEED = 200.0 * 4
 const JUMP_VELOCITY = -550.0 * 4
 
 var coyote_active: bool
+var recursion_lock := false
+
 @export var Bloom_level : TileMapLayer
 @export var Gloom_level : TileMapLayer
 @export var Spike_level : TileMapLayer
 @export var greyscale : ColorRect
+@export var death_shader : ColorRect
 @onready var player_animation: AnimatedSprite2D = $player_animation
 
 
 func _ready() -> void:
 	self.global_position = CheckpointSystem.checkpoint
+	await get_tree().create_timer(0.5).timeout
+	Music.spawn()
+	Music.Ost_change(false)
 
 
 
@@ -34,6 +40,8 @@ func _physics_process(delta: float) -> void:
 # Handle jump.
 	if can_move and Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_active):
 		velocity.y = JUMP_VELOCITY
+
+
 
 # flips the player with directions
 	if velocity.x < 0:
@@ -63,7 +71,12 @@ func _on_coyote_timer_timeout() -> void:
 		coyote_active = false
 
 func restart():
-	get_tree().reload_current_scene()
+	if recursion_lock == false:
+		recursion_lock = true
+		can_move = false
+		Music._death()
+		await get_tree().create_timer(0.4).timeout
+		get_tree().reload_current_scene()
 
 
 func is_in_wall() -> bool:
