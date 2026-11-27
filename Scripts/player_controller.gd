@@ -46,14 +46,15 @@ func _physics_process(delta: float) -> void:
 # flips the player with directions
 	if velocity.x < 0:
 		player_animation.flip_h = 1
+		player_animation.play("walk_left")
 	elif velocity.x > 0:
 		player_animation.flip_h = 0
+		player_animation.play("walk_right")
 # Get the input direction and handle the movement/deceleration.
 # As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction and can_move:
 		velocity.x = direction * SPEED
-		player_animation.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		player_animation.play("default")

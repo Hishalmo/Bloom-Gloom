@@ -15,6 +15,10 @@ run/main_scene="uid://dqjvxwm1apgls"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://d3s3nfdxlkk4i"
 
+[audio]
+
+buses/default_bus_layout="uid://ckf20e43x556"
+
 [autoload]
 
 _mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
@@ -23,6 +27,7 @@ Music="*uid://8s8jq8gr16bh"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="viewport"
 
 [editor_plugins]

@@ -34,4 +34,5 @@ offset_left = -1331.0
 offset_top = -2031.0
 offset_right = 1517.0
 offset_bottom = 695.0
+mouse_filter = 2
 script = ExtResource("4_0chwm")
