@@ -13,7 +13,17 @@ func show_line(line: String, hold: float) -> void:
 	t.tween_property(label, "modulate:a", 0.0, 0.8)   # fade out
 	await t.finished
 
+func outro_line() -> void:
+	await show_line("And thus, they embark into their journy.", 3.0)
+	await show_line("As Bloom can not bloom", 3.0)
+	await show_line("Without the eyes of Gloom", 4.0)
 
+	visible = false
+
+func play_ending() -> void:
+	visible = true
+	camera.ending_pan(10.0)
+	await outro_line()
 
 
 func _ready() -> void:

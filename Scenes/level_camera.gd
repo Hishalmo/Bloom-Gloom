@@ -12,6 +12,15 @@ func intro_pan(duration: float) -> void:
 	else:
 		$"../player/player_controller".can_move = true 
 
+func ending_pan(duration: float) -> void:
+	$"../player/player_controller".can_move = false
+	var target_position = global_position + Vector2(0, -1200)
+	var t = create_tween()
+	t.set_trans(Tween.TRANS_SINE)
+	t.set_ease(Tween.EASE_IN_OUT)
+	t.tween_property(self, "global_position", target_position, duration)
+	await t.finished
+
 func level_switch(target_position:Vector2):
 	var t = create_tween().set_parallel().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	t.tween_property(self, "global_position", target_position, 0.5)
