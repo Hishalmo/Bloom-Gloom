@@ -22,9 +22,11 @@ func outro_line() -> void:
 
 func show_thank_you() -> void:
 	await show_line("Thank you for playing!", 5.0)
-	await show_line("Feedbacks helps us improve our game <3", 5.0)
+	await show_line("Itch.IO Feedback helps us improve our game <3", 5.0)
 	label.text = "Press E to restart"
 	label.modulate.a = 0.0
+	CheckpointSystem.finished_the_game = true
+	print(CheckpointSystem.finished_the_game)
 	var t = create_tween()
 	t.tween_property(label, "modulate:a", 1.0, 1.5)
 	await t.finished

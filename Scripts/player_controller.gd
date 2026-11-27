@@ -18,8 +18,10 @@ var recursion_lock := false
 func _ready() -> void:
 	self.global_position = CheckpointSystem.checkpoint
 	await get_tree().create_timer(0.5).timeout
+	Music.player_controller = self
 	Music.spawn()
 	Music.Ost_change(false)
+
 
 
 
@@ -40,6 +42,7 @@ func _physics_process(delta: float) -> void:
 # Handle jump.
 	if can_move and Input.is_action_just_pressed("ui_accept") and (is_on_floor() or coyote_active):
 		velocity.y = JUMP_VELOCITY
+		#$jump.play()
 
 
 
@@ -72,13 +75,19 @@ func _on_coyote_timer_timeout() -> void:
 		coyote_active = false
 
 func restart():
-	if recursion_lock == false:
+	if recursion_lock == false and CheckpointSystem.finished_the_game == false:
 		recursion_lock = true
 		can_move = false
 		Music._death()
 		await get_tree().create_timer(0.4).timeout
 		get_tree().reload_current_scene()
-
+	elif CheckpointSystem.finished_the_game == true:
+		CheckpointSystem.checkpoint = Vector2(330,-800)
+		can_move = false
+		Music._death()
+		await get_tree().create_timer(0.4).timeout
+		get_tree().reload_current_scene()
+		CheckpointSystem.finished_the_game = false
 
 func is_in_wall() -> bool:
 	#Player pos in Vec2. (x,y)

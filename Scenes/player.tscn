@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cx1tmcx3lkf7e" path="res://Assets/Gloom_switch.wav" id="4_fkybt"]
 [ext_resource type="AudioStream" uid="uid://cbt1kqgjxf45m" path="res://Assets/Bloom_switch.wav" id="5_x3wgy"]
 [ext_resource type="AudioStream" uid="uid://c5ayd6q1vxkgl" path="res://Assets/Cant_switch_while_in_wall.wav" id="6_x3wgy"]
+[ext_resource type="AudioStream" uid="uid://bnjbxtfdwyeyo" path="res://Assets/350898__cabled_mess__jump_c_08.wav" id="7_3smsa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("2_6t5aa")
@@ -61,6 +62,10 @@ random_pitch = 1.0594631
 streams_count = 1
 stream_0/stream = ExtResource("6_x3wgy")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q0076"]
+streams_count = 1
+stream_0/stream = ExtResource("7_3smsa")
+
 [node name="player" type="Node2D" unique_id=101389145]
 
 [node name="player_controller" type="CharacterBody2D" parent="." unique_id=1316840856]
@@ -98,6 +103,11 @@ pitch_scale = 1.5
 [node name="Cant_switch_while_in_wall!" type="AudioStreamPlayer" parent="player_controller" unique_id=341929949]
 stream = SubResource("AudioStreamRandomizer_fkybt")
 volume_db = -20.0
+
+[node name="jump" type="AudioStreamPlayer" parent="player_controller" unique_id=2071994471]
+stream = SubResource("AudioStreamRandomizer_q0076")
+volume_db = -10.0
+pitch_scale = 1.5
 
 [connection signal="timeout" from="player_controller/coyote_timer" to="player_controller" method="_on_coyote_timer_timeout"]
 [connection signal="body_shape_entered" from="player_controller/death_detection_area" to="player_controller/death_detection_area" method="_on_body_shape_entered"]

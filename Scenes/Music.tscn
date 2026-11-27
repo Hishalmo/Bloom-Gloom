@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bnnc5usb1hrxq" path="res://Scenes/music.gd" id="1_pcohf"]
 [ext_resource type="Shader" uid="uid://b7akwhu0trnmp" path="res://Scenes/diamonds.gdshader" id="3_p1bea"]
 [ext_resource type="Script" uid="uid://cue3kxhvhjt0g" path="res://Scenes/death.gd" id="4_0chwm"]
+[ext_resource type="AudioStream" uid="uid://igbgggan4jfn" path="res://Assets/death_fade_sound.mp3" id="5_54ncq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0chwm"]
 shader = ExtResource("3_p1bea")
@@ -36,3 +37,8 @@ offset_right = 1517.0
 offset_bottom = 695.0
 mouse_filter = 2
 script = ExtResource("4_0chwm")
+
+[node name="death_fade" type="AudioStreamPlayer" parent="." unique_id=960095921]
+stream = ExtResource("5_54ncq")
+volume_db = -20.0
+pitch_scale = 0.8

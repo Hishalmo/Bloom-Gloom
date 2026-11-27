@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var death: ColorRect = $death/death
 @export var music: AudioStreamPlayer 
+var player_controller: CharacterBody2D 
 
 func Ost_change(is_grey: bool) -> void:
 	var bus_idx = AudioServer.get_bus_index("Master")
@@ -17,6 +18,7 @@ func Ost_change(is_grey: bool) -> void:
 
 # death animation
 func _death():
+		$death_fade.play()
 		var shader = death.material as ShaderMaterial
 		var t = create_tween()
 		t.tween_property(shader, "shader_parameter/height", 0.5, 0.4)
@@ -25,3 +27,7 @@ func spawn():
 		var shader = death.material as ShaderMaterial
 		var t = create_tween()
 		t.tween_property(shader, "shader_parameter/height", -1, 0.4)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("E") and CheckpointSystem.finished_the_game == true:
+		player_controller.restart()
